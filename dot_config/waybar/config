@@ -1,0 +1,50 @@
+{
+	"layer": "top",
+	"modules-left": ["sway/workspaces", "sway/mode"],
+	"modules-center": ["clock"],
+	"modules-right": ["custom/media", "pulseaudio", "memory", "network", "temperature"],
+    "clock": {
+            "format": "{:%I:%M %A %b %d}",
+            "interval": 60
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%", 
+        "format-muted": " Muted",
+        "on-click": "pavucontrol",
+        "on-scroll-up": "~/bin/adjust_volume.sh",
+        "on-scroll-down": "~/bin/adjust_volume.sh",
+        "max-length": 25,
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+    },
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid} ",
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+    "temperature": {
+        "tooltip": false,
+        "format": " {temperatureC}°C",
+    },
+    "custom/media": {
+        "exec": "/usr/bin/python3 ~/scripts/mediaplayer.py --player spotify",
+        "format": "{}  ",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "~/.config/rofi/powermenu.sh",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 5
+    },
+}
